@@ -91,10 +91,6 @@ def histogrammer(EVS, EVC, EVT, ranger, nbins):
     hT, bins = np.histogram(EVT, range=ranger, bins=nbins)
     return bins, hS, hC, hT
 
-# Caricamento dell'oggetto interpolazione
-with open("templ6x6.pkl", "rb") as f:
-    templ_loaded = pickle.load(f)
-
 def get_templates(crystal, SiPM, SPR_ampl, ranger, dt, nsimS=1E7, nsimC=1E7, normalize=True, graphics=True, Laser_Calib = False, run = 477):
     
     x = np.arange(0, 10000)*dt
@@ -104,13 +100,8 @@ def get_templates(crystal, SiPM, SPR_ampl, ranger, dt, nsimS=1E7, nsimC=1E7, nor
             SPR = spr_3x3(x, .1, SPR_ampl, dt)
         if SiPM=='6x6':
             SPR = spr_6x6(x, .1, SPR_ampl, dt)
-        if SiPM=='6x6_template':
-            SPR = templ_loaded(x)*SPR_ampl
     else: 
-        if SiPM=='6x6':
-            SPR = template_laser_calib(x, run)
-        if SiPM=='3x3':
-            SPR = template_laser_calib(x, run)
+        SPR = template_laser_calib(x, run)
         SPR = SPR_ampl/np.max(SPR) * SPR
             
             
