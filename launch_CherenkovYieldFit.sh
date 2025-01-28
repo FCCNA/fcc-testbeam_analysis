@@ -7,7 +7,7 @@ python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 70  --channel 2 --La
 python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 80  --channel 2 --Laser
 python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 90  --channel 2 --Laser
 python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 100 --channel 2 --Laser
-#python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 120 --channel 2 --Laser
+python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 120 --channel 2 --Laser
 python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 140 --channel 2 --Laser
 python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 160 --channel 2 --Laser
 python3 CherenkovYieldFit.py --crystal BGO --beam e --angle 180 --channel 2 --Laser
