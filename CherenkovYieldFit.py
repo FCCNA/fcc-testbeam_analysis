@@ -33,7 +33,7 @@ import importlib
 
 
 
-with open('data.yaml', 'r') as file:
+with open('yaml/data.yaml', 'r') as file:
     runs_info = yaml.safe_load(file)
     
 make_dir('Hardware_Fit')
@@ -109,7 +109,7 @@ df[f'amplitude_media_channel{ch}'] = df[f'amplitude_media_channel{ch}'].fillna(0
 directory = 'CherenkovYieldFit/'
 make_dir('CherenkovYieldFit')
 
-with open('laser_calib.yaml', 'r') as file:
+with open('yaml/laser_calib.yaml', 'r') as file:
     log_laser = yaml.safe_load(file)
     
 if ch == 1:
