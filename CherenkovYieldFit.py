@@ -114,7 +114,7 @@ with open('yaml/laser_calib.yaml', 'r') as file:
     
 if ch == 1:
     sipm = '3x3' 
-    ampl = 28 if beam == 'e' else 18
+    ampl = 0 if beam == 'e' else 18
 if ch == 2:
     sipm = '6x6' 
     ampl = 18 if beam == 'e' else 28

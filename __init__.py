@@ -217,6 +217,7 @@ def custom_plot_layout(title="", xlabel="", ylabel="", figsize=(16, 9), isWavefo
 
 
 def create_mean_wf(run, path_data, check = True):
+    
     times_file = f'npys/Times_{run}.npy'
     mean_waveform_file = f'npys/Mean_Waveform_{run}.npy'
 
@@ -231,7 +232,7 @@ def create_mean_wf(run, path_data, check = True):
     for i in df.keys():
         if len(df[i]['1media']) == 12500:
            sum_ += df[i]['1media']
-            lens+=1
+           lens+=1
     sum_ = sum_ / lens
     times = df[0]['times'] 
 
