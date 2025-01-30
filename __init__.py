@@ -2,6 +2,7 @@ import numpy as np
 import datetime
 import matplotlib.pyplot as plt
 plt.rc('text', usetex=True)
+plt.rc('font', family='palatino')
 import sys
 sys.path.append("/eos/user/g/ggaudino/tb_analysis/midas/python")
 import midas.file_reader
@@ -193,7 +194,7 @@ def mixing_run(run_index, save_candidate = False, not_all_events = False, max_ev
 
 def custom_plot_layout(title="", xlabel="", ylabel="", figsize=(16, 9), isWaveform = False, crystal = None, beam = None, angle = None, channels = None):
     
-    string_top_left = f"FCC Napoli - {crystal} - {beam}"
+    string_top_left = f"$\it FCC\,Napoli - {crystal} -$" + f" {beam}"
     string_top_right = f"{angle}°"
     
     if not isWaveform:
@@ -207,9 +208,9 @@ def custom_plot_layout(title="", xlabel="", ylabel="", figsize=(16, 9), isWavefo
         for i, channel in enumerate(channels):
             ax[i].set_ylabel(ylabel, fontsize = 20)
             ax[i].grid(True)
-            ax[i].text(0.01, 1.01, string_top_left,  transform=ax[i].transAxes, fontsize=25,  fontstyle = 'italic', fontfamily = 'serif', verticalalignment='bottom', horizontalalignment='left')
+            ax[i].text(0.01, 1.01, string_top_left,  transform=ax[i].transAxes, fontsize=25,  fontstyle = 'italic', verticalalignment='bottom', horizontalalignment='left')
             if angle != None:
-                ax[i].text(1, 1.01, string_top_right + f' - Channel {channel}',  transform=ax[i].transAxes, fontsize=25,  fontstyle = 'italic', fontfamily = 'serif', verticalalignment='bottom', horizontalalignment='right')
+                ax[i].text(1, 1.01, string_top_right + f' - Channel {channel}',  transform=ax[i].transAxes, fontsize=25,  fontstyle = 'italic', verticalalignment='bottom', horizontalalignment='right')
         plt.subplots_adjust(hspace=0.05)
         plt.title(title)    
     plt.xlabel(xlabel, fontsize = 25)
