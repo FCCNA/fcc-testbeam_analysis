@@ -106,9 +106,6 @@ times = wf[0]['times']
 
 df[f'amplitude_media_channel{ch}'] = df[f'amplitude_media_channel{ch}'].fillna(0)
 
-directory = 'CherenkovYieldFit/'
-make_dir('CherenkovYieldFit')
-
 with open('yaml/laser_calib.yaml', 'r') as file:
     log_laser = yaml.safe_load(file)
     
