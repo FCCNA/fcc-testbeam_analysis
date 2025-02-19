@@ -59,7 +59,7 @@ def sum_waveform(waveform, channel, maximum = False, ampl_max = None, ampl_min =
     return wf
 
 
-def read_waveform(run_index, starting_index = 0, save_candidate = False, not_all_events = False, max_event = 1000, save_all_wf = False, file_path = '/eos/home-g/ggaudino/tb_analysis/runs/'):
+def read_waveform(run_index, starting_index = 0, save_candidate = False, not_all_events = False, max_event = 1000, save_all_wf = False, file_path = '/eos/home-g/ggaudino/tb_analysis/runs/', addLyso = False):
     
     """
     Reads waveform data from a MIDAS file and processes it.
@@ -111,7 +111,8 @@ def read_waveform(run_index, starting_index = 0, save_candidate = False, not_all
             if len(bank.data):
                 channel = np.where(Channel_Enabled)[0][int(bank_name[-1])]
                 ch_osci = channel + 1
-                if ch_osci not in [1,2]:
+                ch_list = [1,2,3] if addLyso else [1,2]
+                if ch_osci not in ch_list:
                     continue
                 wf = 1000 * (((bank.data - (bit / 2)) * scale[channel] * 10 / bit) - (position[channel] * scale[channel]))
 
@@ -133,6 +134,11 @@ def read_waveform(run_index, starting_index = 0, save_candidate = False, not_all
                     f'amplitude_channel{ch_osci}': ampl,
                     f'amplitude_media_channel{ch_osci}': ampl_media
                 })
+                if addLyso and ch_osci == 3:
+                    new_data.update({
+                        f'passLyso': ampl,
+                    })
+                    
 
                 if save_candidate:
                     peaks, _ = find_peaks(np.abs(media), height=1, width=100)
@@ -171,13 +177,13 @@ def read_waveform(run_index, starting_index = 0, save_candidate = False, not_all
 
 
 
-def mixing_run(run_index, save_candidate = False, not_all_events = False, max_event = 1000, save_all_wf = False):
+def mixing_run(run_index, save_candidate = False, not_all_events = False, max_event = 1000, save_all_wf = False, addLyso = False):
     list_wf = []
     list_df = []
     index = 0
     for run_number in run_index:
         print(index)
-        tmp_1, tmp_2 = read_waveform(run_number, index, save_candidate, not_all_events, max_event, save_all_wf)
+        tmp_1, tmp_2 = read_waveform(run_number, index, save_candidate, not_all_events, max_event, save_all_wf, addLyso = addLyso)
         print(len(tmp_1))
         index = len(tmp_1)
         list_wf.append(tmp_1)
