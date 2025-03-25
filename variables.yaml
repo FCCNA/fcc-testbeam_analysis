@@ -1,0 +1,98 @@
+dict_plot:
+  c_over_s_sipm_c:
+    label: "Čerenkov/Scintillation Ratio"
+    title: "$c/s_{sipm,c}$ Yield"
+    range: [0, 10]
+  c_sipm_s_over_s_sipm_s:
+    label: "Čerenkov/Scintillation Ratio"
+    title: "$c_{sipm,s}/s_{sipm,s}$ Yield"
+    range: [0, 10]
+  c_over_s_sipm_s:
+    label: "Čerenkov/Scintillation Ratio"
+    title: "$c/s_{sipm,s}$ Yield"
+    range: [0, 2]
+  c_over_Esim:
+    label: "Čerenkov/$E_{sim}$"
+    title: "Čerenkov/$E_{sim}$(GeV)"
+    range: [0, 200]
+  c_sipm_c:
+    label: "Čerenkov Yield"
+    title: "$c_{sipm,c}$ Yield"
+    range: [0, 250]
+  c_sipm_s:
+    label: "Čerenkov Yield"
+    title: "$c_{sipm,s}$ Yield"
+    range: [0, 300]
+  s_sipm_c:
+    label: "Scintillation - Channel 2"
+    title: "$s_{sipm,c}$ Yield"
+    range: [0, 1000]
+  s_sipm_s:
+    label: "Scintillation - Channel 1"
+    title: "$s_{sipm,s}$ Yield"
+    range: [0, 50000]
+  t0_sipm_s:
+    label: "Rising Time - Channel 1"
+    title: "$t_{0, sipm, s}$"
+    range: [-50, 50]
+  t0_sipm_c:
+    label: "Rising Time - Channel 2"
+    title: "$t_{0, sipm, c}$"
+    range: [-200, 200]
+  e:
+    label: "Energy Yield [GeV]"
+    title: "$E$ released"
+    range: [0, 5]
+  s_s_over_s_c:
+    label: "Scint_s/Scint_c"
+    title: "$s_{sipm,s}/s_{sipm,c}$"
+    range: [0, 10]
+  c_s_over_c_c:
+    label: "Cher_s/Cher_c"
+    title: "$c_{sipm,s}/c_{sipm,c}$"
+    range: [0, 10]
+  Q_data_sipm_s_Q_data_sipm_s:
+    label: "Scint_s/Scint_c"
+    title: "$Q_{sipm,s}/Q_{sipm,c}$ released"
+    range: [0, 10]
+  Q_data_sipm_s_Q_fit_sipm_s:
+    label: "Charge Data/Fit"
+    title: "$Q_{data}/Q_{fit}$"
+    range: [0.5, 1.5]
+  Q_data_sipm_s:
+    label: "Charge Deposited (a.u.)"
+    title: "$q$ deposited - sipm,s"
+    range: [0, 300000]
+  c_over_e:
+    label: "Čerenkov/Energy [GeV]"
+    title: "$phe$/GeV"
+    range: [0, 400]
+  amplitude_sipm_s:
+    label: "Amplitude Scintillation [mV]"
+    title: "Ampl[mV]"
+    range: [0, 1200]
+  amplitude_sipm_c:
+    label: "Amplitude Cherenkov [mV]"
+    title: "Ampl[mV]"
+    range: [0, 1200]
+
+variables_list:
+  - c_over_s_sipm_c
+  - c_sipm_s_over_s_sipm_s
+  - c_over_s_sipm_s
+  - c_over_Esim
+  - c_sipm_c
+  - c_sipm_s
+  - s_sipm_c
+  - s_sipm_s
+  - t0_sipm_s
+  - t0_sipm_c
+  - e
+  - s_s_over_s_c
+  - c_s_over_c_c
+  - Q_data_sipm_s_Q_data_sipm_s
+  - Q_data_sipm_s_Q_fit_sipm_s
+  - Q_data_sipm_s
+  - c_over_e
+  - amplitude_sipm_s
+  - amplitude_sipm_c

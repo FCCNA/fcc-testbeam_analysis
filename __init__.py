@@ -252,3 +252,11 @@ def make_dir(path):
         return f"Cartella '{path}' creata con successo."
     else:
         return f"La cartella '{path}' esiste già."
+
+
+def create_ratio_Areas(sigma, theta):
+    l = 1.2
+    L = 15
+    theta_r = np.radians(theta)
+    area = l*(l*np.cos(theta_r) + L*np.sin(theta_r))
+    return area/(2*np.pi*sigma*sigma)

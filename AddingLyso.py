@@ -82,8 +82,3 @@ for angle in angles:
     output_df = pd.merge(fit_df, df[['__event__','passLyso']], on='__event__', how='left')
     
     output_df.to_parquet(f'Hardware_Fit/parqs/FitInfo_Lyso_fromLaser_{crystal}_{beam}_{angle}_BothChs.parq')
-    
-    
-
-
-
