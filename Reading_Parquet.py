@@ -220,9 +220,9 @@ for variable in args.variable:
     plt.text(1, 1.01, string_top_right, transform=plt.gca().transAxes, fontsize=25,  fontstyle = 'italic', fontfamily = 'serif', verticalalignment='bottom', horizontalalignment='right')
 
     ax1.set_xlabel("Angle [°]")
-    ax1.set_ylabel(dict_plot[variable]['label'], color=colorslist[0])
+    ax1.set_ylabel(dict_plot[variable]['label'], color=color['BGO'])
     ax1.errorbar(angles_list['BGO'], lists['BGO'], yerr = errors_lists['BGO'], color=color['BGO'], marker='o', label='BGO')
-    ax1.tick_params(axis='y', labelcolor=colorslist[0])
+    ax1.tick_params(axis='y', labelcolor=color['BGO'])
     ax1.axvline(180-63, color='firebrick', linestyle='--')  # Linea verticale senza label
     ax1.set_xticks(list(ax1.get_xticks()) + [180-63])  # Aggiunge 63 ai tick esstenti
     ax1.set_xticklabels([r'$\theta_C$' if x == (180-63) else f'{x:.0f}' for x in ax1.get_xticks()])
@@ -230,9 +230,9 @@ for variable in args.variable:
 
 
     ax2 = ax1.twinx()  
-    ax2.set_ylabel(dict_plot[variable]['label'], color=colorslist[1])
+    ax2.set_ylabel(dict_plot[variable]['label'], color=color['BSO'])
     ax2.errorbar(angles_list['BSO'], lists['BSO'], yerr = errors_lists['BSO'], color=color['BSO'], marker='s', label='BSO')
-    ax2.tick_params(axis='y', labelcolor=colorslist[1])
+    ax2.tick_params(axis='y', labelcolor=color['BSO'])
     plt.legend(loc = 'upper right')
 
     plt.title(dict_plot[variable]['title'])
