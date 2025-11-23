@@ -104,7 +104,6 @@ def get_templates(
     sigS = signal.convolve(SPR_template, hS)[:len(bins)]
     sigC = signal.convolve(SPR_template, hC)[:len(bins)]
 
-    sigDark = np.zeros_like(sigS)   
     if dcr is not False:
         sipm_type = sipm_params[0]
         if dcr is True:
