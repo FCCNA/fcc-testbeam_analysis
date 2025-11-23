@@ -29,7 +29,7 @@ def template_spr_laser_calib(x, spe_ampl, run, path='npys'):
     laser_wf = laser_wf/ np.max(laser_wf) * spe_ampl #normalize to ampl
     return np.interp(x, times[:-10], laser_wf[:-10])
 
-def template_spr_generic(x, x0, dt, sipm_params, config):
+def template_spr_generic(x, x0, dt, sipm_params, config_file=CONFIG):
     #sipm_type: ["6x6", "28db"]
     #tf, tr, fc from CONFIG["sipm"][sipm_type]["times"]
     sipm_type = sipm_params[0]
@@ -43,7 +43,7 @@ def template_spr_generic(x, x0, dt, sipm_params, config):
     return db_exp_hp(x, spe_ampl, tf, tr, x0, c, dt, fc)
     
 
-def arrival_time_sim(nevS, nevC, crystal, config):
+def arrival_time_sim(nevS, nevC, crystal, config_file=CONFIG):
     # crystal: "BGO", "BSO", "PWO" (case-insensitive)
     # t1, t2, a1, a2 from CONFIG["crystals"][crystal.lower()]
 
@@ -70,7 +70,6 @@ def histogrammer(EV, ranger, nbins):
 def get_templates(
     crystal,
     sipm_params,
-    config,
     ranger,
     dt,
     nsimS=1e7,
@@ -79,7 +78,8 @@ def get_templates(
     normalize=True,
     graphics=True,
     Laser_Calib=False,
-    run=477):
+    run=477,
+    config_file=CONFIG):
     
     # crystal: "BGO", "BSO", "PWO"
     # SiPM: "6x6", "28db"
@@ -87,7 +87,7 @@ def get_templates(
     x = np.arange(0, 10000)*dt
 
     if not Laser_Calib:
-        SPR_template = template_spr_generic(x, 0.1, dt, sipm_params, config=config)
+        SPR_template = template_spr_generic(x, 0.1, dt, sipm_params, config_file=CONFIG)
     else: 
         sipm_type = sipm_params[0]
         fe_gain = sipm_params[1]
@@ -104,7 +104,6 @@ def get_templates(
     sigS = signal.convolve(SPR_template, hS)[:len(bins)]
     sigC = signal.convolve(SPR_template, hC)[:len(bins)]
 
-    sigDark = np.zeros_like(sigS)   
     if dcr is not False:
         sipm_type = sipm_params[0]
         if dcr is True:
